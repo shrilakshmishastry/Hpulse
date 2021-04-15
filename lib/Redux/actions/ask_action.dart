@@ -25,7 +25,6 @@ Future<void> fetchAskPostAction(Store<AppState> store) async{
     assert(response.statusCode == 200);
 
     final res = await  askPostFetch(response.data);
-    // print(res);
     await store.dispatch(
       SetAskAction(
         new

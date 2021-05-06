@@ -15,18 +15,19 @@ class SetShowAction{
 Future<void> fetchShowPostAction(Store<AppState> store)async{
   store.dispatch(SetShowAction(
     HNewsState(
-      isLoading:true
+      isShowLoading:true
     ),
   ));
   try{
     final response = await Dio().get(Api.baseUrl+Api.newStories);
     assert(response.statusCode == 200);
-    final res = await askPostFetch(response.data);
+    final res = await askPostFetch(response.data.sublist(0,50));
+    assert( res!= null);
     await store.dispatch(
       SetShowAction(
         HNewsState(
           showStories: HNews.listFromJson(res),
-          isLoading: false,
+          isShowLoading: false,
         ),
       ),
     );
@@ -35,7 +36,7 @@ Future<void> fetchShowPostAction(Store<AppState> store)async{
     store.dispatch(
       SetShowAction(
         HNewsState(
-            isError: true
+            isShowError: true
         ),
       ),
     );

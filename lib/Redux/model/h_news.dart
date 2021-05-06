@@ -18,11 +18,11 @@ class HNews{
     by = json["by"] ==  null ? "" : json["by"];
     text = json["text"];
     score = json["score"] == null ? 0 : json["score"];
-    descendants = json["descendants"] == null ? [] : json["descendants"];
-    kids = json["kids"] == null ? []: json["kids"];
+    descendants = json["descendants"] == null || json["descendants"].runtimeType is List ? 0 : json["descendants"];
+    kids = json["kids"] == null  ? []: json["kids"];
   }
 
-  static List<dynamic> listFromJson(List<dynamic> json){
+  static List<HNews> listFromJson(List<dynamic> json){
     return json == null ? <HNews>[] : json.map((e) =>HNews.fromJson(e)).toList();
 }
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:hpulse/DashBoard/sliver_app_bar_delegate.dart';
+import 'package:hpulse/DashBoard/ask_stories.dart';
+import 'package:hpulse/DashBoard/new_stories.dart';
+import 'package:hpulse/DashBoard/show_stories.dart';
 import 'package:hpulse/DashBoard/top_stories.dart';
 import 'package:hpulse/Redux/actions/ask_action.dart';
-import 'package:hpulse/Redux/model/h_news.dart';
+import 'package:hpulse/Redux/actions/new_action.dart';
+import 'package:hpulse/Redux/actions/show_action.dart';
+import 'package:hpulse/Redux/actions/top_action.dart';
 import 'package:hpulse/Redux/store.dart';
 import 'package:hpulse/config/theme/sizes_helper.dart';
 import 'package:hpulse/config/theme/style.dart';
@@ -84,7 +88,11 @@ class DashBoard extends StatelessWidget {
               },
               body: StoreConnector<AppState,AppState>
                 (
-                  onInit: (store) {Redux.store.dispatch(fetchAskPostAction);
+                  onInit: (store) {
+                    // Redux.store.dispatch(fetchAskPostAction);
+                    // Redux.store.dispatch(fetchShowPostAction);
+                    // Redux.store.dispatch(fetchNewPostAction);
+                    // Redux.store.dispatch(fetchTopStoriesAction);
                   },
                   converter: (store)=>store.state,
                   builder: (context,topStories){
@@ -92,15 +100,9 @@ class DashBoard extends StatelessWidget {
                     return TabBarView(
                       children: [
                         TopStories(),
-                        Center(
-                          child: Text("hello"),
-                        ),
-                        Center(
-                          child: Text("hello"),
-                        ),
-                        Center(
-                          child: Text("hello"),
-                        ),
+                       ShowStories(),
+                        AskStories(),
+                       NewStories(),
                       ],
                     );
 

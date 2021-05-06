@@ -6,37 +6,32 @@ import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 @immutable
-class AppState{
+class AppState {
   final HNewsState news;
-  AppState({
-    @required this.news
-});
-  AppState copyWith({
-  @required HNewsState news
-}){
+
+  AppState({@required this.news});
+
+  AppState copyWith({@required HNewsState news}) {
     return AppState(news: news ?? this.news);
   }
 }
 
-class Redux{
+class Redux {
   static Store<AppState> _store;
 
-  static Store<AppState> get store{
-    if(_store == null){
+  static Store<AppState> get store {
+    if (_store == null) {
       throw Exception("store is empty");
-    }else{
+    } else {
       return _store;
     }
   }
 
-  static Future<void> init()async{
+  static Future<void> init() async {
     print("param");
     final initialState = HNewsState();
-    _store = Store<AppState>(
-      appReducer,
-      middleware: [thunkMiddleware],
-      initialState: AppState(news:initialState)
-    );
+    _store = Store<AppState>(appReducer,
+        middleware: [thunkMiddleware],
+        initialState: AppState(news: initialState));
   }
-
 }

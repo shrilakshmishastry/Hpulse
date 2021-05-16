@@ -8,6 +8,7 @@ Future<dynamic> fetchItem(int ele) async{
 
 Future<dynamic> askPostFetch(List<dynamic> res) async {
      List<dynamic> response = [];
+     print(res.length);
     await Future.forEach(res, (element) async {
        response.add(await fetchItem(element));
     }

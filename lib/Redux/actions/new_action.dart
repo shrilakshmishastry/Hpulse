@@ -16,18 +16,20 @@ Future<void> fetchNewPostAction(Store<AppState> store ) async{
   store.dispatch(
       SetNewAction(
     HNewsState(
-      isLoading: true
+      isNewLoading: true
     ),
   ));
   try{
 
    final response = await Dio().get(Api.baseUrl+Api.newStories);
    assert(response.statusCode == 200);
-   final res = await newPostFetch(response.data);
+   print("response");
+   print(response);
+   final res = await newPostFetch(response.data.sublist(0,100));
    await store.dispatch(
        SetNewAction(
       HNewsState(
-        isLoading: false,
+        isNewLoading: false,
         newStories: HNews.listFromJson(res),
       ),
    ));
@@ -36,7 +38,7 @@ Future<void> fetchNewPostAction(Store<AppState> store ) async{
     store.dispatch(
         SetNewAction(
           HNewsState(
-              isError: true,
+              isNewError: true,
           ),
         ));
   }

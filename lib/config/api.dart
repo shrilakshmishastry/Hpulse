@@ -5,4 +5,5 @@ class Api{
   static const String newStories = "newstories.json?print=pretty";
   static const String askStories = "showstories.json?print=pretty";
   static const String topStories = "topstories.json?print=pretty";
+  static const String userInfo = "user/";
 }

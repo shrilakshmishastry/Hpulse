@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 // function to check user credential
-Future<void> getHttp() async {
+Future<dynamic> getHttp() async {
   print("hello here");
 
   try{
@@ -9,12 +9,14 @@ Future<void> getHttp() async {
       queryParameters: {
         "goto":"news",
         "acct":'shrilakshmi',
-        "pw": "shrilakshmi12",
+        "pw": "shrilakshmi",
       },
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
-    print(response.data.runtimeType);
+    assert(! response.data.contains('Bad login'));
+    return !response.data.contains('Bad login');
   }catch(e){
     print(e);
+    return false;
   }
 }

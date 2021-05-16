@@ -17,7 +17,7 @@ Future<void> fetchAskPostAction(Store<AppState> store) async{
   store.dispatch(
       SetAskAction(
         HNewsState(
-          isLoading: true,
+          isAskLoading: true,
         )
       ));
   try{
@@ -25,13 +25,12 @@ Future<void> fetchAskPostAction(Store<AppState> store) async{
     assert(response.statusCode == 200);
 
     final res = await  askPostFetch(response.data);
-    // print(res);
+    print(res);
     await store.dispatch(
       SetAskAction(
-        new
         HNewsState(
           ask: HNews.listFromJson(res),
-          isLoading: false,
+          isAskLoading: false,
         ),
       ),
     );
@@ -41,7 +40,7 @@ Future<void> fetchAskPostAction(Store<AppState> store) async{
     store.dispatch(
       SetAskAction(
         HNewsState(
-          isError: true,
+          isAskError: true,
         )
       )
     );

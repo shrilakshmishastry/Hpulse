@@ -17,21 +17,22 @@ Future<void> fetchTopStoriesAction(Store<AppState> store) async{
   store.dispatch(
       SetTopStoriesAction(
           HNewsState(
-            isLoading: true,
+            isTopLoading: true,
           )
       ));
   try{
     final  response = await Dio().get(Api.baseUrl+Api.topStories);
     assert(response.statusCode == 200);
-
-    final res = await  askPostFetch(response.data);
-    // print(res);
+    print("shri");
+    print(response.data);
+    final res = await  askPostFetch(response.data.sublist(0,50));
+    print("respond");
+    print(res);
     await store.dispatch(
       SetTopStoriesAction(
-        new
         HNewsState(
           topStories: HNews.listFromJson(res),
-          isLoading: false,
+          isTopLoading: false,
         ),
       ),
     );
@@ -41,7 +42,7 @@ Future<void> fetchTopStoriesAction(Store<AppState> store) async{
     store.dispatch(
         SetTopStoriesAction(
             HNewsState(
-              isError: true,
+              isTopError: true,
             )
         )
     );

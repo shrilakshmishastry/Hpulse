@@ -28,7 +28,6 @@ Future<void> fetchAskPostAction(Store<AppState> store) async{
     print(res);
     await store.dispatch(
       SetAskAction(
-        new
         HNewsState(
           ask: HNews.listFromJson(res),
           isAskLoading: false,

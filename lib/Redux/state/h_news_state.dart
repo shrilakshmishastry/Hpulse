@@ -23,13 +23,28 @@ class HNewsState {
     this.isShowError = false,
     this.ask = const [],
     this.newStories = const [],
-    this.isAskLoading,
+    this.isAskLoading = false,
     this.isNewLoading = false,
     this.isTopLoading = false,
     this.isShowLoading = false,
     this.showStories = const [],
     this.topStories = const [],
   });
+
+  factory HNewsState.initial() => HNewsState(
+    isAskError : false,
+    isTopError : false,
+    isNewError : false,
+    isShowError : false,
+    ask : [],
+    newStories : [],
+    isAskLoading : false,
+    isNewLoading : false,
+    isTopLoading : false,
+    isShowLoading : false,
+    showStories : [],
+    topStories :  [],
+  );
 
   HNewsState copyWith({
     @required bool isAskLoading,

@@ -3,6 +3,7 @@ import 'package:hpulse/Redux/state/h_news_state.dart';
 
 askReducer(HNewsState prevState,SetAskAction action){
   final payload = action.askState;
+  print(prevState);
   return prevState.copyWith(
       isAskLoading: payload.isAskLoading,
       isAskError: payload.isAskError,

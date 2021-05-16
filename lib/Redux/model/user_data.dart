@@ -1,7 +1,9 @@
 class UserData{
-  int id;
+  String id;
   dynamic created;
   dynamic karma;
+
+  UserData();
 
   UserData.fromJson(Map<String, dynamic> data){
     if (data == null) return;
@@ -11,7 +13,16 @@ class UserData{
 
   }
 
-  static List<UserData> listFromJson(List<dynamic> data){
-    return data == null ? <UserData>[] : data.map((value)=>UserData.fromJson(value)).toList();
+  static UserData listFromJson(dynamic data){
+    return data == null ?  UserData()  : UserData.fromJson(data);
   }
+
+  dynamic toJson(){
+    return {
+      "id": id,
+      "created" : created,
+      "karma" : karma,
+    };
+  }
+
 }

@@ -100,9 +100,13 @@ class DashBoard extends StatelessWidget {
                     return TabBarView(
                       children: [
                         TopStories(),
-                       ShowStories(),
-                        AskStories(),
-                       NewStories(),
+                       // ShowStories(),
+                       //  AskStories(),
+                       // NewStories(),
+                       //  Text("hello"),
+                        Text("hello"),
+                        Text("hello"),
+                        Text("hello"),
                       ],
                     );
 

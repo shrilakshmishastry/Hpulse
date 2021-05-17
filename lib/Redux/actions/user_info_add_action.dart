@@ -14,16 +14,18 @@ class UserInfoAddAction {
   UserInfoAddAction(this.userDataState);
 }
 
-Future<void> fetchUserInfoAction(Store<AppState> store) async {
+Future<void> fetchUserInfoAction(
+    Store<AppState> store, String name, String passsword) async {
   store.dispatch(UserInfoAddAction(
     UserDataState(
       infoLoading: true,
     ),
   ));
   try {
-    final response = await getHttp();
+    final response = await getHttp(name, passsword);
     assert(response);
-    final result = await Dio().get(Api.baseUrl+Api.userInfo+"shrilakshmi.json?print=pretty");
+    final result = await Dio()
+        .get(Api.baseUrl + Api.userInfo + name+".json?print=pretty");
     print("inside action");
     print(UserData.listFromJson(result.data));
     await store.dispatch(
@@ -35,16 +37,13 @@ Future<void> fetchUserInfoAction(Store<AppState> store) async {
         ),
       ),
     );
-
   } catch (e) {
     print(e);
-    store.dispatch(
-      UserInfoAddAction(
-        UserDataState(
-          loginError: true,
-          infoLoading: false,
-        ),
-      )
-    );
+    store.dispatch(UserInfoAddAction(
+      UserDataState(
+        loginError: true,
+        infoLoading: false,
+      ),
+    ));
   }
 }

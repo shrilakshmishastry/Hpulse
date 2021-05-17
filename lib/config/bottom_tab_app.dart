@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hpulse/DashBoard/dash_board.dart';
+import 'package:hpulse/Profile/profile.dart';
 import 'package:hpulse/config/theme/style.dart';
 class BottomTabApp extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _BottomTabAppState extends State<BottomTabApp> {
   //   fontSize: Style.text,
   // );
   int _selectedIndex = 0;
-  List<Widget> wi = [DashBoard(),Text("ask"),Text("profile")];
+  List<Widget> wi = [DashBoard(),Text("ask"),Profile()];
 
   void _onItemTapped(int index){
     setState(() {

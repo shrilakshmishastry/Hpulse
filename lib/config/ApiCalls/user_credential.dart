@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 
 // function to check user credential
-Future<dynamic> getHttp() async {
+Future<dynamic> getHttp(String name,String password) async {
   print("hello here");
 
   try{
     final response =await Dio().get("https://news.ycombinator.com/login",
       queryParameters: {
         "goto":"news",
-        "acct":'shrilakshmi',
-        "pw": "shrilakshmi",
+        "acct": name,
+        "pw": password,
       },
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );

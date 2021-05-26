@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hpulse/config/theme/sizes_helper.dart';
-import 'package:hpulse/config/theme/style.dart';
+
 class About extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    double width = getWidth(context);
+    double width = setWidth(context);
     return   Container(
       padding: EdgeInsets.all(width * 0.03),
       child: Column(

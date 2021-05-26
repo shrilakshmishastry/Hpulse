@@ -11,3 +11,18 @@ double getHeight(BuildContext context){
 double getWidth(BuildContext context){
   return getSize(context).width;
 }
+
+double setWidth(BuildContext context){
+  double widthAct = getWidth(context);
+  double heightAct = getHeight(context);
+  double width = widthAct > heightAct ? heightAct : widthAct;
+  return width;
+}
+
+double setHeight(BuildContext context){
+  double widthAct = getWidth(context);
+  double heightAct = getHeight(context);
+  double height   =  widthAct > heightAct ? widthAct : heightAct;
+  return height;
+}
+

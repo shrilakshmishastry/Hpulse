@@ -9,5 +9,7 @@ userInfoAddReducer(UserDataState prevData,UserInfoAddAction action){
   return prevData.copyWith(
     loggedIn: payload.loggedIn,
     userInfo: payload.userInfo,
+    infoLoading: payload.infoLoading,
+    loginError: payload.loginError,
   );
 }

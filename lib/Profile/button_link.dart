@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hpulse/config/theme/sizes_helper.dart';
 import 'package:hpulse/config/theme/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,7 +22,6 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = getWidth(context);
     return ListTile(
       autofocus: true,
       onTap: ()=>handlePress(url),

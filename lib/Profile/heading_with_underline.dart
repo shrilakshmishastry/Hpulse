@@ -8,8 +8,10 @@ class HeadingWithUnderLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = setWidth(context);
+    double height = setHeight(context);
     return   Container(
-      margin: EdgeInsets.only(bottom: getWidth(context) * 0.05),
+      margin: EdgeInsets.only(bottom: width * 0.05),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
 
@@ -25,15 +27,15 @@ class HeadingWithUnderLine extends StatelessWidget {
         ],
       ),
       padding: EdgeInsets.only(
-        top: getHeight(context) * 0.01,
-        bottom: getHeight(context) * 0.01,
-        left: getHeight(context) * 0.02,
+        top: height * 0.01,
+        bottom: height * 0.01,
+        left: height * 0.02,
       ),
       decoration: BoxDecoration(
         color: Style.gray,
           border: Border(
             bottom: BorderSide(
-                color: Style.gray, width: getWidth(context) * 0.006),
+                color: Style.gray, width: width * 0.006),
           )),
     );
   }

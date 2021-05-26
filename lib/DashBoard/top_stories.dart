@@ -13,6 +13,17 @@ class TopStories extends StatelessWidget {
         padding:EdgeInsets.all(getHeight(context)*0.01),
       child: Column(
         children: [
+          StoreConnector<AppState,bool>(
+            converter: (store) =>store.state.news.isTopError,
+            builder: (context,isTopError){
+              if(isTopError){
+                return Text("Error");
+              }else{
+                return SizedBox.shrink();
+              }
+            },
+
+          ),
 
           StoreConnector<AppState,bool>
             (

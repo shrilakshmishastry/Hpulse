@@ -28,11 +28,12 @@ UserDataState copyWith({
   @required bool loggedIn,
   @required UserData userInfo,
   @required bool loginError,
+  @required bool infoLoading,
 }){
   return UserDataState(
     loggedIn: loggedIn ?? this.loggedIn,
     userInfo: userInfo ?? this.userInfo,
-    infoLoading: false,
+    infoLoading: infoLoading ?? this.infoLoading,
     loginError: loginError ?? this.loginError,
   );
 }

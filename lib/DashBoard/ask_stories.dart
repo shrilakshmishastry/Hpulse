@@ -11,7 +11,17 @@ class AskStories extends StatelessWidget {
       padding: EdgeInsets.all(getHeight(context)*0.01),
       child: Column(
         children: [
+          StoreConnector<AppState,bool>(
+            converter: (store) =>store.state.news.isAskError,
+            builder: (context,isAskError){
+              if(isAskError){
+                return Text("Error");
+              }else{
+                return SizedBox.shrink();
+              }
+            },
 
+          ),
           StoreConnector<AppState,bool>
             (
             converter: (store)=>store.state.news.isAskLoading,

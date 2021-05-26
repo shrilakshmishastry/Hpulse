@@ -8,5 +8,6 @@ userInfoRemoveReducer(UserDataState prevState,UserInfoRemoveAction action){
       loggedIn: false,
       userInfo: UserData(),
       loginError: false,
+    infoLoading: false,
   );
 }
